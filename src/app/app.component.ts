@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ecommerce2';
+  clickedMenu : boolean = false;
+  public clickMenu()
+  {
+    if(this.clickedMenu)
+    {
+      this.clickedMenu=false;
+    }else{
+      this.clickedMenu=true;
+    }
+  }
 }
