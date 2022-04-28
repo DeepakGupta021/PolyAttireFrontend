@@ -9,12 +9,13 @@
         </select>
     </div>
     
-    <div class="row">
+    <div class="row" *ngFor="let tempProduct of products">
         <div class="col-4">
-            <app-product [price]="300" [imagesURL]="['../assets/images/product-1.jpg']" [title]="'Red Printed T-Shirt'">
+          
+            <app-product [price]="tempProduct.price" [displayImage]="tempProduct.displayImage" [title]="tempProduct.title">
             </app-product>
         </div>
-        <div class="col-4">
+        <!-- <div class="col-4">
             <app-product [price]="1399" [imagesURL]="['../assets/images/product-2.jpg']" [title]="'HRX Black Shoes'">
             </app-product>
         </div>
@@ -56,7 +57,7 @@
         <div class="col-4">
             <app-product [price]="1399" [imagesURL]="['../assets/images/product-5.jpg']" [title]="'HRX Black Shoes'">
             </app-product>
-        </div>
+        </div> -->
     </div>
     <div class="page-btn">
         <span>1</span>

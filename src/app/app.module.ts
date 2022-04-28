@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,6 +8,16 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductService } from './services/product.service';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+   {path: 'category/:id', component: ProductsComponent},
+   {path: 'category',component:ProductsComponent},
+   {path: 'home',component:HomeComponent},
+   {path: '',redirectTo:'/home',pathMatch:'full'},
+   {path: '**', redirectTo:'/home',pathMatch:'full'}
+];
 
 @NgModule({
   declarations: [
@@ -17,10 +28,11 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     ProductDetailComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

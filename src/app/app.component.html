@@ -8,11 +8,10 @@
               <img src="..\assets\images\logo.png" width="125px">
           </div>
           <nav>
-              <ul [ngStyle]="{'maxHeight': clickedMenu ? '200px' : '0px' }">
+              <ul [ngStyle]="{'maxHeight': clickedMenu ? '250px' : '0px' }">
                   <li><a href="">Home</a></li>
-                  <li><a href="">Products</a></li>
-                  <li><a href="">About</a></li>
-                  <li><a href="">Contact</a></li>
+                  <li><a routerLink="/category/1"  routerLinkActive="active-link">Men's T-shirt</a></li>
+                  <li><a routerLink="/category/2" routerLinkActive="active-link">Woman's T-shirt</a></li>
                   <li><a href="">Account</a></li>
               </ul>
           </nav>
@@ -25,9 +24,11 @@
    &nbsp;
 </div>
 
-<!-- <app-home></app-home> -->
-<!-- <app-products></app-products> -->
-<app-product-detail></app-product-detail>
+
+<!-- Main Content -->
+<router-outlet></router-outlet>
+
+
 <!-- -------footer------- -->
 
 <div class="footer">
