@@ -9,61 +9,36 @@
         </select>
     </div>
     
-    <div class="row" *ngFor="let tempProduct of products">
-        <div class="col-4">
-          
-            <app-product [price]="tempProduct.price" [displayImage]="tempProduct.displayImage" [title]="tempProduct.title">
+    <div class="row" >
+        <div class="col-4" *ngFor="let tempProduct of products | slice:0:4;">
+            <app-product [price]="tempProduct.price" [displayImage]="tempProduct.displayImage" [title]="tempProduct.title" [id]="tempProduct.id">
             </app-product>
         </div>
-        <!-- <div class="col-4">
-            <app-product [price]="1399" [imagesURL]="['../assets/images/product-2.jpg']" [title]="'HRX Black Shoes'">
+        <div class="col-4" *ngFor="let tempProduct of products | slice:4:8;">
+            <app-product [price]="tempProduct.price" [displayImage]="tempProduct.displayImage" [title]="tempProduct.title" [id]="tempProduct.id">
             </app-product>
         </div>
-        <div class="col-4">
-            <app-product [price]="699" [imagesURL]="['../assets/images/product-3.jpg']" [title]="'Grey Joggers'">
+        <div class="col-4" *ngFor="let tempProduct of products | slice:8:12;">
+            <app-product [price]="tempProduct.price" [displayImage]="tempProduct.displayImage" [title]="tempProduct.title" [id]="tempProduct.id">
             </app-product>
         </div>
-        <div class="col-4">
-            <app-product [price]="300" [imagesURL]="['../assets/images/product-4.jpg']" [title]="'Red Printed T-Shirt'">
-            </app-product>
-        </div>
-        <div class="col-4">
-            <app-product [price]="1399" [imagesURL]="['../assets/images/product-5.jpg']" [title]="'HRX Black Shoes'">
-            </app-product>
-        </div>
-        <div class="col-4">
-            <app-product [price]="699" [imagesURL]="['../assets/images/product-6.jpg']" [title]="'Grey Joggers'">
-            </app-product>
-        </div><div class="col-4">
-            <app-product [price]="300" [imagesURL]="['../assets/images/product-7.jpg']" [title]="'Red Printed T-Shirt'">
-            </app-product>
-        </div>
-        <div class="col-4">
-            <app-product [price]="1399" [imagesURL]="['../assets/images/product-8.jpg']" [title]="'HRX Black Shoes'">
-            </app-product>
-        </div>
-        <div class="col-4">
-            <app-product [price]="1399" [imagesURL]="['../assets/images/product-2.jpg']" [title]="'HRX Black Shoes'">
-            </app-product>
-        </div>
-        <div class="col-4">
-            <app-product [price]="699" [imagesURL]="['../assets/images/product-3.jpg']" [title]="'Grey Joggers'">
-            </app-product>
-        </div>
-        <div class="col-4">
-            <app-product [price]="300" [imagesURL]="['../assets/images/product-4.jpg']" [title]="'Red Printed T-Shirt'">
-            </app-product>
-        </div>
-        <div class="col-4">
-            <app-product [price]="1399" [imagesURL]="['../assets/images/product-5.jpg']" [title]="'HRX Black Shoes'">
-            </app-product>
-        </div> -->
     </div>
+    <!-- pagination -->
+
     <div class="page-btn">
+        <ngb-pagination class="paging" [(page)]="thePageNumber"
+                        [pageSize]="thePageSize"
+                        [collectionSize]="theTotalElements"
+                        (pageChange)="listProducts()">
+
+        </ngb-pagination>
+    </div>
+
+    <!-- <div class="page-btn">
         <span>1</span>
         <span>2</span>
         <span>3</span>
         <span>4</span>
         <span>&#8594;</span>
-    </div>
+    </div> -->
 </div>

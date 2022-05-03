@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @Input() event!:Event;
+
+
   title = 'ecommerce2';
   clickedMenu : boolean = false;
   public clickMenu()
@@ -17,4 +20,18 @@ export class AppComponent {
       this.clickedMenu=true;
     }
   }
+
+  onActivate() {
+    // window.scroll(0,0);
+ 
+    window.scroll({ 
+            top: 0, 
+            left: 0, 
+            behavior: 'smooth' 
+     });
+ 
+     //or document.body.scrollTop = 0;
+     //or document.querySelector('body').scrollTo(0,0)
+ }
+
 }

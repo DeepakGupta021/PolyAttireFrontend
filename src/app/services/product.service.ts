@@ -1,32 +1,64 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import { DetailedProduct } from '../common/detailed-product';
 import { Product } from '../common/product';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
-  private baseUrl:string = 'http://localhost:8080/api/getAllProducts';
+  
+  private baseUrl:string = 'http://localhost:8080';
+  private productsUrl:string= '/api/getAllProducts';
+  private detailedProductsUrl:string = '/api/getproduct';
 
   constructor(private httpClient: HttpClient) { }
 
+  getProduct(theProductId: number): Observable<DetailedProduct> {
+    
+    const productUrl = `${this.baseUrl}${this.detailedProductsUrl}/${theProductId}`;
+    return this.httpClient.get<DetailedProduct>(productUrl);
+  }
+
+
   getProductList(theCategoryId:number) : Observable<Product[]>{
     
-    var searchUrl  = this.baseUrl;
+    var searchUrl  = this.baseUrl+this.productsUrl;
 
     if(theCategoryId!=null)
     {
       searchUrl = searchUrl+'/'+theCategoryId;
     }
     
-    return this.httpClient.get<GetResponse>(searchUrl).pipe(
+    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
       map(response=>response.products)
     );
   }
+
+  getProductListPaginate(thePage: number,
+                         thePageSize: number,
+                         theCategoryId:number) : Observable<GetResponseProducts>{
+    
+    var searchUrl  = this.baseUrl+this.productsUrl;
+
+    if(theCategoryId!=null)
+    {
+      searchUrl = searchUrl+'/'+theCategoryId+`?page=${thePage}&size=${thePageSize}`;
+    }else{
+      searchUrl = searchUrl+`?page=${thePage}&size=${thePageSize}`;
+    }
+    
+    return this.httpClient.get<GetResponseProducts>(searchUrl);
+  }
 }
 
-interface GetResponse{
+interface GetResponseProducts{
   products:Product[];
+  page:{
+    size:number,
+    totalElements:number,
+    totalPages:number,
+    number:number,
+  }
 }

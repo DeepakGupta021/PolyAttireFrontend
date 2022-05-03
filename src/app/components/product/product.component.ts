@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
+  @Input() id!:Number;
   @Input() displayImage:String='./../assets/images/tshirt.jpg';
   @Input() title:String='default';
   @Input() price:number=0;

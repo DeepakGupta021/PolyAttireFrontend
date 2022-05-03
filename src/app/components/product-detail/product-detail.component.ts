@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DetailedProduct } from 'src/app/common/detailed-product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,18 +10,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailComponent implements OnInit {
 
-  imageList : String[] =['../assets/images/gallery-1.jpg','../assets/images/gallery-2.jpg','../assets/images/gallery-3.jpg','../assets/images/gallery-4.jpg'];
+  imageList! : String[];
   currentImage! : String ;
+  productDetailed : DetailedProduct = new DetailedProduct();
 
-  constructor() {
-    this.currentImage=this.imageList[0];
+
+
+  constructor(private productService: ProductService,
+              private route: ActivatedRoute) {
    }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(()=>{
+      this.handleProductDetailse();
+    })
+  }
+  handleProductDetailse() {
+    const theProductId: number = Number(this.route.snapshot.paramMap.get('id'));
+    
+    this.productService.getProduct(theProductId).subscribe(
+      data=>{
+        data.imageArray.push(data.displayImage);
+        this.productDetailed=data;
+      }
+    )
+  
   }
 
   public changeImage(src:String){
-    this.currentImage=src;
+    this.productDetailed.displayImage=src;
   }
 
 }

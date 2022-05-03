@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductComponent } from './components/product/product.component';
@@ -11,9 +10,12 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { ProductService } from './services/product.service';
 import { RouterModule, Routes } from '@angular/router';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 const routes: Routes = [
-   {path: 'category/:id', component: ProductsComponent},
-   {path: 'category',component:ProductsComponent},
+   {path: 'products/:id', component: ProductDetailComponent},
+   {path: 'category/:id', component: ProductsComponent,data:{pageSize:12}},
+   {path: 'category',component:ProductsComponent,data:{pageSize:12}},
    {path: 'home',component:HomeComponent},
    {path: '',redirectTo:'/home',pathMatch:'full'},
    {path: '**', redirectTo:'/home',pathMatch:'full'}
@@ -30,7 +32,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule 
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

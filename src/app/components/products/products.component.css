@@ -52,22 +52,36 @@ select:focus{
     outline: none;
 }
 
-.page-btn{
-    margin: 0 auto 80px;
+
+ngb-pagination{
+    margin: 10px  80px;
 }
 
-.page-btn span{
+
+ngb-pagination /deep/ .page-item{
     display: inline-block;
+}
+
+ngb-pagination /deep/ .page-link{
     border: 1px solid #ff523b;
     margin-left: 10px;
-    width: 40px;
-    height: 40px;
-    text-align: center;
+    padding: 10px;
+    
     line-height: 40px;
+   
     cursor: pointer;
 }
 
-.page-btn span:hover{
+ngb-pagination /deep/ .page-link:hover{
     background-color: #ff523b;
     color: white;
+}
+
+ngb-pagination /deep/ .active > .page-link{
+  background-color: #740e01;
+  color: white;
+}
+
+ngb-pagination /deep/ .visually-hidden{
+    display: none;
 }

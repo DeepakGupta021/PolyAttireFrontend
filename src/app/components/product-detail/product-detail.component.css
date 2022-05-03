@@ -3,6 +3,15 @@
     margin: 100px auto 50px;
 }
 
+.col-2 p{
+    font-size: 26px;
+}
+
+.col-2 h1{
+    font-size: 30px;
+    line-height: 45px;
+}
+
 select{
     border: 1px solid #ff523b;
     padding: 5px;
