@@ -11,6 +11,7 @@ import { ProductService } from './services/product.service';
 import { RouterModule, Routes } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
    {path: 'products/:id', component: ProductDetailComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
     HomeComponent,
     ProductComponent,
     ProductsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ShoppingCartComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
