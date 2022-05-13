@@ -6,6 +6,7 @@ import { CartItem } from '../common/cart-item';
   providedIn: 'root'
 })
 export class CartService {
+  
 
   cartItems: CartItem[]=[];
   totalPrice: Subject<number> = new Subject<number>();
@@ -51,6 +52,16 @@ export class CartService {
     this.totalQuantity.next(totalQuantity);
 
 
+  }
+
+  remove(cartItem: CartItem) {
+    const itemIndex = this.cartItems.findIndex(tempCartItem => (tempCartItem.id===cartItem.id && tempCartItem.size===cartItem.size));
+    
+    if(itemIndex>-1)
+    {
+      this.cartItems.splice(itemIndex,1);
+      this.computeCartTotals();
+    }
   }
 
   constructor() { }

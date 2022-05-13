@@ -15,7 +15,7 @@
                             <p>{{cartItem.title}}</p>
                             <small>Price: Rs {{cartItem.unitPrice}}</small>
                             <br>
-                            <a href="#" class="remove">Remove</a>
+                            <a role="button" (click)="remove(cartItem)" class="remove">Remove</a>
                         </div>
                     </div>
                 </td>

@@ -31,6 +31,7 @@ td input{
 .remove{
     color: #ff523b;
     font-size: 12px;
+    cursor: pointer;
 }
 
 td img{

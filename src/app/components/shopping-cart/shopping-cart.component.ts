@@ -28,4 +28,8 @@ export class ShoppingCartComponent implements OnInit {
     this.subTotal = this.total-this.tax;
   }
 
+  remove(cartItem : CartItem){
+    this.cartService.remove(cartItem);
+  }
+
 }
