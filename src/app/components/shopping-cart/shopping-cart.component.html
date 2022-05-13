@@ -1,77 +1,56 @@
 <div class="small-container cart-page">
-    <table>
-        <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-        </tr>
-        <tr>
-            <td>
-                <div class="cart-info">
-                    <img src="..\assets\images\buy-1.jpg" alt="">
-                    <div>
-                        <p>Red Printed Tshirt</p>
-                        <small>Price: Rs 500</small>
-                        <br>
-                        <a href="#" class="remove">Remove</a>
-                    </div>
-                </div>
-            </td>
-            <td><input type="number" value="1"></td>
-            <td>Rs 500</td>
-        </tr>
-        <tr>
-            <td>
-                <div class="cart-info">
-                    <img src="..\assets\images\buy-2.jpg" alt="">
-                    <div>
-                        <p>Red Printed Tshirt</p>
-                        <small>Price: Rs 350</small>
-                        <br>
-                        <a href="#" class="remove">Remove</a>
-                    </div>
-                </div>
-            </td>
-            <td><input type="number" value="1"></td>
-            <td>Rs 350</td>
-        </tr>
-        <tr>
-            <td>
-                <div class="cart-info">
-                    <img src="..\assets\images\buy-3.jpg" alt="">
-                    <div>
-                        <p>Red Printed Tshirt</p>
-                        <small>Price: Rs 900</small>
-                        <br>
-                        <a href="#" class="remove">Remove</a>
-                    </div>
-                </div>
-            </td>
-            <td><input type="number" value="1"></td>
-            <td>Rs 900</td>
-        </tr>
-    </table>
-
-    <div class="total-price">
+    <div *ngIf="cartItems.length > 0;else elseBlock">
         <table>
             <tr>
-                <td>Subtotal</td>
-                <td>Rs 1750</td>
+                <th>Product</th>
+                <th>Size</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
             </tr>
-            <tr>
-                <td>Tax</td>
-                <td>Rs 175</td>
-            </tr>
-            <tr>
-                <td>Total</td>
-                <td>Rs 1925</td>
-            </tr>
-            <tr>
-                <td></td>
+            <tr *ngFor="let cartItem of cartItems">
                 <td>
-                    <a href="" class="btn">Check-Out</a>
+                    <div class="cart-info">
+                        <img src={{cartItem.imageUrl}}>
+                        <div>
+                            <p>{{cartItem.title}}</p>
+                            <small>Price: Rs {{cartItem.unitPrice}}</small>
+                            <br>
+                            <a href="#" class="remove">Remove</a>
+                        </div>
+                    </div>
                 </td>
+                <td>{{cartItem.size}}</td>
+                <td>    
+                    <input type="number" value={{cartItem.quantity}} readonly>
+                </td>
+                <td>Rs {{cartItem.quantity*cartItem.unitPrice}}</td>
             </tr>
         </table>
+
+        <div class="total-price">
+            <table>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>Rs {{subTotal | number}}</td>
+                </tr>
+                <tr>
+                    <td>Tax</td>
+                    <td>Rs {{tax | number}}</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>Rs {{total}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <a href="" class="btn">Check-Out</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
+    <ng-template #elseBlock>
+       <img src='../assets/images/empty cart.png' alt="">
+    </ng-template>
 </div>

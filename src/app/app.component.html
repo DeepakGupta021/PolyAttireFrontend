@@ -1,5 +1,5 @@
 <div class="ribbon">
-  <a href="#">Under Development</a>
+  <a routerLink="/home">Under Development</a>
 </div>
 <div class="header">
   <div class="container">
@@ -9,13 +9,14 @@
           </div>
           <nav>
               <ul [ngStyle]="{'maxHeight': clickedMenu ? '250px' : '0px' }">
-                  <li><a href="">Home</a></li>
+                  <li><a routerLink="/home">Home</a></li>
                   <li><a routerLink="/category/1"  routerLinkActive="active-link">Men's T-shirt</a></li>
                   <li><a routerLink="/category/2" routerLinkActive="active-link">Woman's T-shirt</a></li>
-                  <li><a href="">Account</a></li>
+                  <li><a routerLink="">Account</a></li>
               </ul>
           </nav>
-          <img src="..\assets\images\cart.png" alt="cart" height="30px" width="30px">
+          <app-card-status></app-card-status>
+         
           <img src="..\assets\images\menu.png" class="menu-icon" (click)="clickMenu()">
       </div>
   </div>
@@ -26,8 +27,8 @@
 
 
 <!-- Main Content -->
-<!-- <router-outlet (activate)="onActivate()"></router-outlet> -->
-<app-shopping-cart></app-shopping-cart>
+<router-outlet (activate)="onActivate()"></router-outlet>
+<!-- <app-shopping-cart></app-shopping-cart> -->
 
 <!-- -------footer------- -->
 

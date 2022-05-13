@@ -12,11 +12,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CardStatusComponent } from './components/cart-status/cart-status.component';
 
 const routes: Routes = [
    {path: 'products/:id', component: ProductDetailComponent},
    {path: 'category/:id', component: ProductsComponent,data:{pageSize:12}},
    {path: 'category',component:ProductsComponent,data:{pageSize:12}},
+   {path: 'cart', component: ShoppingCartComponent},
    {path: 'home',component:HomeComponent},
    {path: '',redirectTo:'/home',pathMatch:'full'},
    {path: '**', redirectTo:'/home',pathMatch:'full'}
@@ -29,7 +31,8 @@ const routes: Routes = [
     ProductComponent,
     ProductsComponent,
     ProductDetailComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    CardStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
