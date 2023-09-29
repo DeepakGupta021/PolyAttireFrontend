@@ -9,7 +9,7 @@ import { Product } from '../common/product';
 })
 export class ProductService {
   
-  private baseUrl:string = 'http://localhost:8080';
+  private baseUrl:string = 'https://polyattire-backend-3eaf149f29d4.herokuapp.com';
   private productsUrl:string= '/api/getAllProducts';
   private detailedProductsUrl:string = '/api/getproduct';
 
